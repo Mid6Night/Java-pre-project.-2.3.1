@@ -28,16 +28,17 @@
                     ${user.getEmail()}
             </td>
             <td>
-               <a href="/users/${user.getId()}/update">Update</a>
+               <a href="/admin/${user.getId()}/update">Update</a>
             </td>
             <td>
-                <a href="/users/${user.getId()}/delete">Delete</a>
+                <a href="/admin/${user.getId()}/delete">Delete</a>
             </td>
         </tr>
     </c:forEach>
 </table>
 <form>
-<a href="/users/add">Create</a>
+<a href="/admin/add">Create</a>
 </form>
+<jsp:include page="logout.jsp"/>
 </body>
 </html>

@@ -11,12 +11,13 @@
     <title>User Create</title>
 </head>
 <body>
-<form action="/users/add" method="post">
+<form action="/admin/add" method="post">
     <input type="text" placeholder="имя" name="firstName"/>
     <input type="text" placeholder="фамилия" name="lastName"/>
     <input type="text" placeholder="email" name="email"/>
+    <input type="text" placeholder="password" name="password"/>
     <button type="submit"> отправить .</button>
-
 </form>
+<jsp:include page="logout.jsp"/>
 </body>
 </html>

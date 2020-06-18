@@ -2,6 +2,8 @@ package pre_project.service;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pre_project.dao.UserDao;
@@ -45,4 +47,9 @@ public class UserServiceImp implements UserService {
       return userDao.getUser(id);
    }
 
+   @Transactional
+   @Override
+   public UserDetails loadUserByUsername(String var1) throws UsernameNotFoundException {
+      return userDao.getUserByName(var1);
+   }
 }

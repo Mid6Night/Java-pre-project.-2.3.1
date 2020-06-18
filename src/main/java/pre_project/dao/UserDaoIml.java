@@ -46,8 +46,17 @@ public class UserDaoIml implements UserDao {
 
     @Override
     public User getUser(Long id) {
-        return (User) sessionFactory.getCurrentSession().createQuery("from User where id = :id")
+        return (User) sessionFactory.getCurrentSession()
+                .createQuery("from User where id = :id")
                 .setParameter("id", id)
+                .uniqueResult();
+    }
+
+    @Override
+    public User getUserByName(String name) {
+        return (User) sessionFactory.getCurrentSession()
+                .createQuery("from User where name = :name")
+                .setParameter("name", name)
                 .uniqueResult();
     }
 }

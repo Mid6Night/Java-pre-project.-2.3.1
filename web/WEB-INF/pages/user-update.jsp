@@ -11,11 +11,13 @@
     <title>User update</title>
 </head>
 <body>
-<form action="/users/${id}/update" method="post">
+<form action="/admin/${id}/update" method="post">
     <input type="text" placeholder="firstName" name="firstName" value="${firstName}"/>
     <input type="text" placeholder="lastName" name="lastName" value="${lastName}"/>
+    <input type="text" placeholder="password" name="password" value="${password}"/>
     <input type="text" placeholder="email" name="email" value="${email}"/>
     <button type="submit"> отправить .</button>
 </form>
+<jsp:include page="logout.jsp"/>
 </body>
 </html>
