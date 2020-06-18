@@ -21,7 +21,6 @@ import java.util.Properties;
 @Configuration
 @PropertySource("classpath:db.properties")
 @EnableTransactionManagement
-@ComponentScan(value = "pre_project")
 public class AppConfig {
 
    @Autowired
