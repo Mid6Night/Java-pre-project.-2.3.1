@@ -12,8 +12,8 @@
 </head>
 <body>
 <form action="/admin/add" method="post">
-    <input type="text" placeholder="имя" name="firstName"/>
-    <input type="text" placeholder="фамилия" name="lastName"/>
+    <input type="text" placeholder="firstName" name="firstName"/>
+    <input type="text" placeholder="lastName" name="lastName"/>
     <input type="text" placeholder="email" name="email"/>
     <input type="text" placeholder="password" name="password"/>
     <button type="submit"> отправить .</button>

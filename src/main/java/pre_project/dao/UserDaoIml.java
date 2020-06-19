@@ -4,7 +4,9 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import pre_project.entity.Role;
 import pre_project.entity.User;
+import pre_project.service.RoleService;
 
 import java.util.List;
 
@@ -12,6 +14,8 @@ import java.util.List;
 public class UserDaoIml implements UserDao {
     @Autowired
     private SessionFactory sessionFactory;
+
+
 
 
     @Override
@@ -59,4 +63,5 @@ public class UserDaoIml implements UserDao {
                 .setParameter("name", name)
                 .uniqueResult();
     }
+
 }

@@ -47,6 +47,12 @@ public class UserServiceImp implements UserService {
       return userDao.getUser(id);
    }
 
+   @Transactional(readOnly = true)
+   @Override
+   public User getByName(String name) {
+      return userDao.getUserByName(name);
+   }
+
    @Transactional
    @Override
    public UserDetails loadUserByUsername(String var1) throws UsernameNotFoundException {

@@ -6,9 +6,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import pre_project.dao.RoleDao;
+import pre_project.entity.Role;
 import pre_project.entity.User;
+import pre_project.service.RoleService;
 import pre_project.service.UserService;
 
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,6 +24,9 @@ public class AdminController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private RoleService roleService;
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String userList(ModelMap model) {
@@ -38,6 +46,8 @@ public class AdminController {
                           @RequestParam String email) {
         User user = new User(firstName, lastName, email);
         user.setPassword(password);
+        user.setRoles(new HashSet<>());
+        user.getRoles().add(roleService.getByName("USER"));
         userService.add(user);
         return "redirect:/admin";
     }
@@ -57,7 +67,6 @@ public class AdminController {
         model.addAttribute("email",user.getEmail());
         model.addAttribute("password",user.getPassword());
         model.addAttribute("id",user.getId());
-
         return "user-update";
     }
 
@@ -66,7 +75,8 @@ public class AdminController {
                          @RequestParam(name = "firstName") String firstName,
                          @RequestParam(name = "lastName") String lastName,
                          @RequestParam(name = "password") String password,
-                         @RequestParam(name = "email") String email) {
+                         @RequestParam(name = "email") String email,
+                         @RequestParam(name = "admin", required = false) boolean admin) {
         User user = userService.getUser(id);
         user.setFirstName(firstName);
         user.setLastName(lastName);
